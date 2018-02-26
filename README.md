@@ -30,10 +30,12 @@ You can select any protobuf version to be included in your project using the `PR
 cmake -DPROTOBUF_VERSION=3.1.1 ..
 ```
 
-To check the version of the protobuf headers shipped with your mesos installation use this command:
+If the version you have selected is not compatible with the version found in the `mesos.pb.h` file you will get a warning like this:
 
 ```
-~$ cat /usr/include/mesos/mesos.pb.h | grep '#if GOOGLE_PROTOBUF_VERSION' | awk '{ print $4}'
-3005000
+-- Mesos compiled with protobuf version 3.3
+CMake Error at CMakeLists.txt:41 (message):
+  Mesos is compiled with protobuf version 3.3 but you have selected v3.5.1.1.
+  Please use the -DPROTOBUF_VERSION= option to select a more appropriate
+  version from https://github.com/google/protobuf/releases
 ```
-
